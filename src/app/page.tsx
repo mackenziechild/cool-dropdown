@@ -2,7 +2,12 @@
 import { useState } from "react";
 import CoolDropdown from "./components/CoolDropdown";
 
-const LARACONS = [
+interface Laracon {
+  id: string;
+  name: string;
+}
+
+const LARACONS: Laracon[] = [
   { id: 'denver', name: 'Denver, USA' },
   { id: 'brisbane', name: 'Brisbane, Australia' },
   { id: 'amsterdam', name: 'Amsterdam, Netherlands' },
