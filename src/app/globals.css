@@ -1,8 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #111111;
+  --foreground: #ededed;
+}
+
+@theme {
+  --color-accent: #0fb880;
+  --color-neutral-950: #111111;
+  --color-neutral-900: #141414;
+  --color-neutral-850: #252525;
+  --color-neutral-800: #1F1F1F;
+  --color-neutral-700: #262626;
+  --color-neutral-650: #3d3d3d;
+  --color-neutral-600: #383838;
 }
 
 @theme inline {
@@ -14,13 +25,61 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #111111;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(60.71% 59.64% at 22.3% 0%, #0D1E1D 0%, #111111 100%);
+  position: relative;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: url("/noise.png") repeat;
+  mix-blend-mode: soft-light;
+  opacity: 0.7;
+}
+
+.noise {
+  position: relative;
+  --noise-img: url("/noise.png");
+  --noise-opacity: 0.7;
+  --noise-blend: soft-light;
+  --noise-z: 1;
+}
+
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--noise-z);
+  background: var(--noise-img) repeat;
+  mix-blend-mode: var(--noise-blend);
+  opacity: var(--noise-opacity);
+  border-radius: inherit;
+}
+
+.shadow-heavy {
+  --tw-shadow: 0px 9px 20px 0px rgba(0, 0, 0, 0.76),
+               0px 37px 37px 0px rgba(0, 0, 0, 0.66),
+               0px 83px 50px 0px rgba(0, 0, 0, 0.39),
+               0px 148px 59px 0px rgba(0, 0, 0, 0.11),
+               0px 231px 65px 0px rgba(0, 0, 0, 0.01);
+  --tw-shadow-colored: 0px 9px 20px 0px var(--tw-shadow-color),
+                       0px 37px 37px 0px var(--tw-shadow-color),
+                       0px 83px 50px 0px var(--tw-shadow-color),
+                       0px 148px 59px 0px var(--tw-shadow-color),
+                       0px 231px 65px 0px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+              var(--tw-ring-shadow, 0 0 #0000),
+              var(--tw-shadow);
 }
